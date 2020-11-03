@@ -7,6 +7,7 @@ const db = require("./db");
 const PORT = process.env.PORT || 1111;
 const session = require("express-session");
 const passport = require("passport");
+const User = require("./db/models/user");
 
 //configure and create our database store
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -60,18 +61,17 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id)
+  User.findByPk(id)
     .then((user) => done(null, user))
     .catch(done);
 });
+//backend routes
+app.use("/api", require("../server/api/index"));
 
 //send index.html
 app.use("*", (req, res, next) =>
   res.sendFile(path.join(__dirname, "..", "public/index.html"))
 );
-
-//backend routes
-app.use("/api", require("../server/api/index"));
 
 //handle 500 errors
 app.use(function (err, req, res, next) {
