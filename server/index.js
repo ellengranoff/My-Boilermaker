@@ -67,6 +67,7 @@ passport.deserializeUser((id, done) => {
 });
 //backend routes
 app.use("/api", require("../server/api/index"));
+app.use("/auth", require("../server/api/auth"));
 
 //send index.html
 app.use("*", (req, res, next) =>

@@ -23,6 +23,12 @@ const seed = async () => {
         password: "54PuppyDog",
         googleId: "MrPupJunior",
       }),
+      User.create({
+        firstName: "Ellen",
+        email: "e@gmail.com",
+        password: "123",
+        googleId: "Junior",
+      }),
     ]);
   } catch (err) {
     console.log(err);
