@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const User = require("../db/models/user");
+const passport = require("passport");
 
 // PUT   /auth/login
 router.put("/login", async (req, res, next) => {
@@ -58,5 +59,7 @@ router.post("/logout", async (req, res, next) => {
 router.get("/me", (req, res, next) => {
   res.json(req.user);
 });
+
+router.use("/google", require("./google"));
 
 module.exports = router;

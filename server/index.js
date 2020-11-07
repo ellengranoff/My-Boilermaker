@@ -9,6 +9,8 @@ const session = require("express-session");
 const passport = require("passport");
 const User = require("./db/models/user");
 
+require("../localSecrets"); // this will mutate the process.env object with your secrets.
+
 //configure and create our database store
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const dbStore = new SequelizeStore({ db: db });

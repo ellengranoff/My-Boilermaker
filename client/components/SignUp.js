@@ -43,6 +43,11 @@ class SignUp extends React.Component {
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
         />
+        <form method="get" action="/auth/google">
+          <button type="submit" className="btn bg-red white p1 rounded">
+            Login with Google
+          </button>
+        </form>
       </div>
     );
   }
