@@ -36,6 +36,18 @@ export const logIn = (formData) => {
   };
 };
 
+export const signUp = (formData) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post("/auth/signup", formData);
+      console.log(data);
+      dispatch(gotMe(data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
 export const logOut = () => {
   return async (dispatch) => {
     try {

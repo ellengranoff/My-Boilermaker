@@ -1,6 +1,7 @@
 import React from "react";
 
 const LocalLoginForm = (props) => {
+  console.log(props);
   const { handleSubmit } = props;
   return (
     <form onSubmit={handleSubmit}>

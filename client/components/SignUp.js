@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import { connect } from "react-redux";
-import { logIn } from "../reducer";
+import { signUp } from "../reducer";
 import LoginForm from "./LoginForm";
 
 const defaultState = {
@@ -9,7 +9,7 @@ const defaultState = {
   password: "",
 };
 
-class Login extends React.Component {
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = defaultState;
@@ -31,13 +31,13 @@ class Login extends React.Component {
     evt.preventDefault();
     const email = evt.target.email.value;
     const password = evt.target.password.value;
-    this.props.logIn({ email, password });
+    this.props.signUp({ email, password });
     this.setState(defaultState);
   }
   render() {
     return (
-      <div className="login">
-        <h2>Log In Here:</h2>
+      <div className="signup">
+        <h2>Sign Up Here:</h2>
         <LoginForm
           state={this.state}
           handleSubmit={this.handleSubmit}
@@ -50,11 +50,11 @@ class Login extends React.Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    logIn: (data) =>
-      dispatch(logIn(data)).then(() => {
+    signUp: (data) =>
+      dispatch(signUp(data)).then(() => {
         ownProps.history.push("/welcomeback");
       }),
   };
 };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(SignUp);
